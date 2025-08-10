@@ -31,9 +31,9 @@ import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 gsap.registerPlugin(DrawSVGPlugin);  // DrawSVGPlugin を登録（SVG線の描画アニメ用）
 const checkmark = document.querySelector('#checkmark') as SVGPathElement;
   // アニメーションさせたいパス要素を取得
-gsap.from(checkmark, {
+gsap.from(checkmark, {// gsap.from()メソッドは始点だけを再生するメソッド
   drawSVG: "0%",      // 線を長さ0％から描き始める（＝何も見えない状態から）
-  duration: 1.5,         // 1.5秒かけて完全に描画される
-  delay: 0.5,        // 0.5秒後にアニメーション開始
+  duration: 1.5,         // アニメーション時間
+  delay: 0.5,        // アニメーションのずらし
 });
 </script>
