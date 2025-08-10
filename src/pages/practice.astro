@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path
+        id="checkmark"
+        d="M20 50 L45 75 L80 30"
+        stroke="green"
+        stroke-width="8"
+        fill="none"
+        stroke-linecap="round"
+      />
+    </svg>
+</div>
+
+<style lang="scss" scoped>
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+svg {
+    width: 150px;
+}
+</style>
+<script>  
+import { gsap } from 'gsap';
+import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
+
+
+gsap.registerPlugin(DrawSVGPlugin);  // DrawSVGPlugin を登録（SVG線の描画アニメ用）
+const checkmark = document.querySelector('#checkmark') as SVGPathElement;
+  // アニメーションさせたいパス要素を取得
+gsap.from(checkmark, {
+  drawSVG: "0%",      // 線を長さ0％から描き始める（＝何も見えない状態から）
+  duration: 1.5,         // 1.5秒かけて完全に描画される
+  delay: 0.5,        // 0.5秒後にアニメーション開始
+});
+</script>

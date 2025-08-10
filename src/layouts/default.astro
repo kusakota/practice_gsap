@@ -1,0 +1,32 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	pageType?:"website" | "article";
+	image: string
+	imageAlt: string
+}
+
+const head: Props = Astro.props;
+
+import Container from '../components/container.astro';
+import BaseMeta from '../components/basemeta.astro';
+import '../styles/reset.scss';
+import '../styles/style.scss';
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import '../styles/serif.scss';
+---
+
+<!Doctype html>
+<html lang="ja">
+  <head>
+		<BaseMeta {...head}/>
+	</head>
+	<body>
+		<Container>
+			<main>
+				<slot />
+			</main>
+		</Container>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  pageType?: "website" | "article";
+  image: string
+  imageAlt: string
+}
+
+const { 
+  title,
+  description,
+  pageType,
+  image,
+  imageAlt
+} = Astro.props;
+
+const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/svg+xml" href="/favicon.ico" />  <!--favicon -->
+<meta name="generator" content={Astro.generator} />
+
+<title>{title}</title>  <!--ページタイトル -->
+<meta name="description" content={description}/>  <!--ページ説明文 -->
+
+<meta property="og:site_name", content="">
+<meta property="og:title" content={title} />  <!--ページタイトル -->
+<meta property="og:description" content={description}/>  <!--ページ説明文 -->
+<meta property="og:type" content={pageType}/> <!--ページのタイプ -->
+<meta property="og:image" content={image}>
+<meta property="og:image:alt" content={imageAlt}>
+
+<meta name="twitter:card" content="summary_large_image">  <!--Twitterカードの種類 -->
+<meta name="twitter:title" content={title}>  <!--ページタイトル -->
+<meta name="twitter:description" content={description}> <!--ページ説明文 -->
+<meta name="twitter:image" content={image}> <!--Twitterカードの画像 -->
+
+<!-- Google tag (gtag.js) -->
+{GA_MEASUREMENT_ID && (
+      <>
+        <script
+          type="text/partytown"
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        ></script>
+        <script type="text/partytown" define:vars={{ GA_MEASUREMENT_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', GA_MEASUREMENT_ID);
+        </script>
+      </>
+    )}

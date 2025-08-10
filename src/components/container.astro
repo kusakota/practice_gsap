@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="container">
+    <slot />
+  </div>
+</div>
+<style lang="scss" >
+.wrapper {
+  width: 100%;
+}
+.container {
+  width: 1280px;
+  padding: 32px 40px 100px;
+  margin: 0 auto;
+  @include media-breakpoint-down(xl) {
+    max-width: 100%;
+    padding: 32px 40px 100px;
+    margin: 0 0;
+  }
+  @include media-breakpoint-down(lg) {
+    max-width: 100%;
+    padding: 24px 32px 100px;
+    margin: 0 0;
+  }
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+    padding: 24px 16px 100px;
+    margin: 0 0;
+  }
+}
+</style>
